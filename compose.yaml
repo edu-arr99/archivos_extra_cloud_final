@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  ingesta_users:
+    build:
+      context: ./ingesta_users
+      dockerfile: Dockerfile
+    volumes:
+      - /home/ubuntu/spotify-ingestion-logs:/home/ubuntu/spotify-ingestion-logs
+      - /home/ubuntu/.aws/credentials:/root/.aws/credentials:ro
+      - ./ingesta_users/data:/app/data
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+
+  ingesta_artists:
+    build:
+      context: ./ingesta_artists
+      dockerfile: Dockerfile
+    volumes:
+      - /home/ubuntu/spotify-ingestion-logs:/home/ubuntu/spotify-ingestion-logs
+      - /home/ubuntu/.aws/credentials:/root/.aws/credentials:ro
+      - ./ingesta_artists/data:/app/data
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+
+  ingesta_songs:
+    build:
+      context: ./ingesta_songs
+      dockerfile: Dockerfile
+    volumes:
+      - /home/ubuntu/spotify-ingestion-logs:/home/ubuntu/spotify-ingestion-logs
+      - /home/ubuntu/.aws/credentials:/root/.aws/credentials:ro
+      - ./ingesta_songs/data:/app/data
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+
+  ingesta_playlists:
+    build:
+      context: ./ingesta_playlists
+      dockerfile: Dockerfile
+    volumes:
+      - /home/ubuntu/spotify-ingestion-logs:/home/ubuntu/spotify-ingestion-logs
+      - /home/ubuntu/.aws/credentials:/root/.aws/credentials:ro
+      - ./ingesta_playlists/data:/app/data
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+
+  ingesta_albums:
+    build:
+      context: ./ingesta_albums
+      dockerfile: Dockerfile
+    volumes:
+      - /home/ubuntu/spotify-ingestion-logs:/home/ubuntu/spotify-ingestion-logs
+      - /home/ubuntu/.aws/credentials:/root/.aws/credentials:ro
+      - ./ingesta_albums/data:/app/data
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
